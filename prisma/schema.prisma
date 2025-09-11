@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// 1. Define the data source and generator
+// You can switch the provider to your database of choice (e.g., mysql, sqlite)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 2. Define the data model for clients
+model Client {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  campaigns Campaign[]
+}
+
+// 3. Define the data model for your marketing campaigns
+model Campaign {
+  campaign_id       String          @id @map("id")
+  campaign_name     String
+  start_date        DateTime?
+  end_date          DateTime?
+  budget            Float
+  channel           String
+  impressions       Int?
+  clicks            Int?
+  conversions       Int?
+  revenue_generated Float?
+  target_audience   String
+  status            CampaignStatus
+
+  // Relation to Client
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String
+}
+
+// 4. Define an enum for the campaign status to ensure type safety
+enum CampaignStatus {
+  Completed
+  Active
+  Planned
+}
+

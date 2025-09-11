@@ -1,0 +1,52 @@
+campaign_id,campaign_name,client_name,start_date,end_date,budget,channel,impressions,clicks,conversions,revenue_generated,target_audience,status
+CAMP-001,Summer Sale 2024,Sunshine Apparel,2024-06-01,2024-08-31,50000.00,Facebook Ads,1250400,62520,1250,75000.50,"Females 25-40, interested in fashion",Completed
+CAMP-002,Q3 Product Launch,Tech Innovations Ltd.,2024-07-15,2024-09-15,75000.00,Google Ads,2500000,50000,800,120000.00,"Tech enthusiasts, early adopters",Active
+CAMP-003,Brand Awareness Push,EcoGreen Products,2024-09-01,2024-11-30,30000.00,SEO,5000000,150000,500,25000.00,"Environmentally conscious consumers",Active
+CAMP-004,Holiday Email Blast,Gourmet Foods Co.,2024-11-01,2024-12-24,15000.00,Email,80000,16000,2400,96000.00,"Existing customers, foodies",Planned
+CAMP-005,Twitter Influencer Collab,FitLife Supplements,2024-08-01,2024-08-15,25000.00,Twitter,950000,47500,950,47500.00,"Fitness enthusiasts, 18-35",Completed
+CAMP-006,Back to School Special,Smart Stationery,2024-07-20,2024-09-05,40000.00,Google Ads,1800000,72000,3600,108000.00,"Parents, students",Completed
+CAMP-007,New App Download Drive,ConnectApp,2024-09-10,2024-10-10,60000.00,Facebook Ads,3000000,90000,15000,15000.00,"Social media users, 16-24",Active
+CAMP-008,Content Marketing Revamp,B2B Solutions Inc.,2024-05-01,2024-10-31,35000.00,SEO,,,,,"C-level executives, IT managers",Active
+CAMP-009,Valentine's Day Promotion,Luxury Chocolatiers,2024-01-15,2024-02-14,22000.00,Email,65000,19500,3900,117000.00,"Couples, gift shoppers",Completed
+CAMP-010,Mobile Game Pre-launch,Pixel Warriors,2024-10-01,2024-10-31,100000.00,YouTube Ads,5000000,250000,50000,50000.00,"Gamers, mobile users",Planned
+CAMP-011,Website Redesign SEO Push,Global Finance Corp,2024-03-01,,95000.00,SEO,12000000,240000,480,96000.00,"Financial professionals, investors",Active
+CAMP-012,Local SEO for Cafes,The Daily Grind,2024-02-01,2024-07-31,12000.00,Google Ads,450000,22500,1125,33750.00,"Local residents, coffee lovers",Completed
+CAMP-013,Autumn Fashion Line,Chic Boutique,2024-09-15,2024-11-15,55000.00,Instagram Ads,2200000,66000,1320,88000.00,"Young adults, fashion followers",Active
+CAMP-014,Lead Gen Campaign,Innovate Software,2024-08-20,2024-10-20,45000.00,LinkedIn Ads,800000,8000,400,,"B2B decision makers",Active
+CAMP-015,Cyber Monday Flash Sale,Gadget Galaxy,25/11/2024,2024-11-25,80000.00,Email,250000,75000,15000,300000.00,"Tech shoppers, discount hunters",Planned
+CAMP-016,Podcasting Sponsorship,SoundScapes Audio,2024-06-10,2024-09-10,18000.00,Podcast,600000,N/A,300,18000.00,"Podcast listeners, age 20-50",Completed
+CAMP-017,Q4 Enterprise Solutions,DataDrive Inc.,2024-10-01,2024-12-31,120000.00,LinkedIn Ads,1500000,9000,450,450000.00,"Enterprise IT departments",Planned
+CAMP-018,Organic Skincare Launch,Purely You,2024-07-01,2024-09-30,48000.00,Instagram Ads,1920000,76800,1536,92160.00,"Health-conscious consumers",Completed
+CAMP-019,Free Trial Signups,SaaSify Platform,2024-09-05,2024-10-05,$60000.00,Google Ads,2000000,40000,4000,,"Small business owners",Active
+CAMP-020,Webinar Promotion,Marketing Gurus,2024-08-15,2024-09-14,7500.00,Email,40000,8000,1200,,"Marketing professionals",Completed
+,,,,,,,,,,,,
+CAMP-021,New Year Fitness Challenge,GymNation,2024-12-15,2025-01-31,33000.00,Facebook Ads,1500000,60000,3000,75000.00,"People with fitness resolutions",Planned
+CAMP-022,Sustainable Packaging Initiative,Evergreen Packaging,2024-04-01,2024-06-30,28000.00,SEO,3500000,70000,350,21000.00,"Eco-friendly businesses",Completed
+CAMP-023,Travel Deals Newsletter,Wanderlust Travels,2024-09-20,2024-10-20,9000.00,Email,120000,18000,900,108000.00,"Travel enthusiasts, bargain hunters",Active
+CAMP-024,Real Estate Virtual Tours,Prestige Properties,2024-08-01,2024-12-31,70000.00,YouTube Ads,2800000,56000,280,560000.00,"High-net-worth individuals, property investors",Active
+CAMP-025,DIY Home Decor Series,Crafty Corners,2024-05-10,2024-08-10,42000.00,Pinterest Ads,2100000,105000,2100,63000.00,"DIY enthusiasts, homeowners",Completed
+CAMP-026,Financial Planning Seminar,WealthWise Advisors,2024-10-05,2024-11-05,20000.00,LinkedIn Ads,500000,4000,200,,"Professionals nearing retirement",Planned
+CAMP-027,Charity Run Sponsorship,Hope Foundation,2024-03-15,2024-04-30,5000.00,Facebook Ads,400000,12000,1000,5000.00,"Socially conscious individuals, runners",Completed
+CAMP-028,Pet Adoption Drive,Furry Friends Shelter,2024-07-25,2024-08-25,10000.00,Instagram Ads,800000,40000,N/A,0.00,"Animal lovers, local community",Completed
+CAMP-029,Online Course Enrollment,LearnFast Academy,2024-09-01,2024-09-30,38000.00,Google Ads,1900000,57000,1140,114000.00,"Lifelong learners, career changers",Active
+CAMP-030,Music Festival Ticket Sales,Rhythm Fest,2024-02-01,2024-05-30,150000.00,Multi-channel,8000000,400000,40000,2000000.00,"Music fans, festival-goers",Completed
+CAMP-031,Luxury Car Test Drives,Velocity Motors,2024-08-10,2024-10-10,85000.00,YouTube Ads,4250000,42500,850,,"Car enthusiasts, affluent buyers",Active
+CAMP-032,Gourmet Coffee Subscription,BeanBox,2024-06-20,2024-09-20,26000.00,Facebook Ads,1300000,52000,2080,62400.00,"Coffee connoisseurs",Completed
+CAMP-033,Children's Book Release,Wonder Tales Publishing,2024-10-15,2024-11-30,19000.00,Pinterest Ads,950000,38000,1900,47500.00,"Parents of young children",Planned
+CAMP-034,Smart Home Gadgets,FutureHome Inc.,2024-09-01,2024-11-01,65000.00,Google Ads,3250000,97500,1950,195000.00,"Homeowners, tech lovers",Active
+CAMP-035,B2C Shipping Service Promo,Swift Couriers,2024-04-05,2024-05-05,24000.00,LinkedIn Ads,600000,4800,240,12000.00,"Small e-commerce businesses",Completed
+CAMP-036,Artisanal Cheese Shop Launch,The Curd Nerd,2024-07-01,2024-08-31,14000.00,Instagram Ads,700000,35000,1400,42000.00,"Foodies, local shoppers",Completed
+CAMP-037,Remote Work Software,TeamFlow,2024-05-20,2024-08-20,58000.00,SEO,6000000,120000,1200,96000.00,"Remote teams, project managers",Completed
+CAMP-038,Language Learning App,LinguaVerse,2024-09-10,2024-11-10,47000.00,TikTok Ads,4700000,235000,23500,23500.00,"Students, travelers, language learners",Active
+CAMP-039,Winter Skincare Campaign,Glow Labs,2024-11-01,2025-01-31,52000.00,Facebook Ads,2600000,104000,2080,124800.00,"Consumers in cold climates",Planned
+CAMP-040,Subscription Box for Dogs,Pawsitively Perfect,2024-08-15,2024-11-15,39000.00,Instagram Ads,1950000,97500,3900,156000.00,"Dog owners",Active
+CAMP-041,Eco-Friendly Cleaning Supplies,Clean Earth Co.,2024-06-01,2024-08-01,31000.00,Google Ads,1550000,46500,1550,62000.00,"Environmentally conscious households",Completed
+CAMP-042,Handmade Jewelry Collection,Artisan Gems,2024-10-01,2024-12-15,27000.00,Etsy Ads,900000,45000,2250,90000.00,"Shoppers looking for unique gifts",Planned
+CAMP-043,Gardening Tools Spring Sale,GreenThumb Tools,2024-03-01,2024-05-31,43000.00,Facebook Ads,2150000,86000,2580,116100.00,"Gardeners, homeowners",Completed
+CAMP-044,Cloud Storage for Creatives,PixelSafe,2024-09-20,2024-11-20,53000.00,YouTube Ads,2650000,53000,1060,53000.00,"Photographers, designers, videographers",Active
+CAMP-045,Ergonomic Office Furniture,PostureRight,2024-07-10,2024-10-10,72000.00,LinkedIn Ads,1800000,14400,720,216000.00,"Businesses, remote workers",Active
+CAMP-046,Board Game Kickstarter,Meeple Mania,2024-05-15,2024-06-15,16000.00,Facebook Ads,1200000,72000,2400,96000.00,"Board game hobbyists",Completed
+CAMP-047,Vintage Clothing Pop-up,Retro Threads,2024-09-05,2024-09-12,8000.00,Instagram Ads,600000,30000,1000,40000.00,"Fashion lovers, vintage collectors",Completed
+CAMP-048,AI-Powered Writing Assistant,WordWise,2024-10-01,2024-12-31,90000.00,Google Ads,4500000,135000,2700,,"Writers, students, professionals",Planned
+CAMP-049,At-Home Cocktail Kits,The Spirited Mixer,2024-11-10,2024-12-25,36000.00,Instagram Ads,1800000,90000,3600,162000.00,"Home entertainers, cocktail enthusiasts",Planned
+CAMP-050,Mental Wellness App Subscription,Mindful Moments,2024-08-01,2024-10-31,68000.00,Facebook Ads,3400000,102000,5100,76500.00,"Adults interested in mindfulness and meditation",Active
