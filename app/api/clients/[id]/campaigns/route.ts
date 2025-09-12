@@ -1,15 +1,16 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const clientId = params.id;
+    const { id: clientId } = await params;
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '20'); // Increased default limit
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = +(searchParams.get("limit") || DEFAULT_PAGE_SIZE);
 
     // Get paginated campaigns
     const skip = (page - 1) * limit;
@@ -17,7 +18,7 @@ export async function GET(
       prisma.campaign.findMany({
         where: { clientId: clientId },
         orderBy: {
-          start_date: 'desc',
+          start_date: "desc",
         },
         skip,
         take: limit,
@@ -28,7 +29,7 @@ export async function GET(
     ]);
 
     return NextResponse.json({
-      campaigns: campaigns.map(campaign => ({
+      campaigns: campaigns.map((campaign) => ({
         campaign_id: campaign.campaign_id,
         campaign_name: campaign.campaign_name,
         start_date: campaign.start_date,
@@ -44,11 +45,10 @@ export async function GET(
       })),
       totalCount,
     });
-
   } catch (error) {
-    console.error('Error fetching campaigns:', error);
+    console.error("Error fetching campaigns:", error);
     return NextResponse.json(
-      { error: 'Failed to fetch campaigns' },
+      { error: "Failed to fetch campaigns" },
       { status: 500 }
     );
   }

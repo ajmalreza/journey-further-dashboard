@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "20"); // Increased default limit
+    const limit = +(searchParams.get("limit") || DEFAULT_PAGE_SIZE);
     const search = searchParams.get("search") || "";
 
     const skip = (page - 1) * limit;

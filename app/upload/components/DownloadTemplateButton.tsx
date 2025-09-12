@@ -28,8 +28,8 @@ export function DownloadTemplateButton({
 
   return (
     <Button onClick={downloadTemplate} variant="outline" size="sm" className={className}>
-      <Download className="mr-2 h-4 w-4" />
-      Download Template
+      <Download className="h-4 w-4 lg:mr-2" />
+      <span className="hidden sm:inline">Download Template</span>
     </Button>
   );
 }

@@ -12,6 +12,7 @@ import {
 import { formatCurrency, formatNumber, formatPercentage } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
 import CampaignsList from "./campaigns-list";
+import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 
 interface Campaign {
   campaign_id: string;
@@ -62,45 +63,46 @@ async function getClientData(clientId: string): Promise<ClientData | null> {
     }
 
     // Calculate aggregated statistics at database level for better performance
-    const [stats, campaignCount, channelData, initialCampaigns] = await Promise.all([
-      // Get aggregated sums
-      prisma.campaign.aggregate({
-        where: { clientId: clientId },
-        _sum: {
-          budget: true,
-          conversions: true,
-          clicks: true,
-          impressions: true,
-          revenue_generated: true,
-        },
-      }),
-      // Get campaign count
-      prisma.campaign.count({
-        where: { clientId: clientId },
-      }),
-      // Get channel distribution for most used channel
-      prisma.campaign.groupBy({
-        by: ['channel'],
-        where: { clientId: clientId },
-        _count: {
-          channel: true,
-        },
-        orderBy: {
-          _count: {
-            channel: 'desc',
+    const [stats, campaignCount, channelData, initialCampaigns] =
+      await Promise.all([
+        // Get aggregated sums
+        prisma.campaign.aggregate({
+          where: { clientId: clientId },
+          _sum: {
+            budget: true,
+            conversions: true,
+            clicks: true,
+            impressions: true,
+            revenue_generated: true,
           },
-        },
-        take: 1,
-      }),
-      // Get initial campaigns for the first page
-      prisma.campaign.findMany({
-        where: { clientId: clientId },
-        orderBy: {
-          start_date: 'desc',
-        },
-        take: 20, // First page limit
-      }),
-    ]);
+        }),
+        // Get campaign count
+        prisma.campaign.count({
+          where: { clientId: clientId },
+        }),
+        // Get channel distribution for most used channel
+        prisma.campaign.groupBy({
+          by: ["channel"],
+          where: { clientId: clientId },
+          _count: {
+            channel: true,
+          },
+          orderBy: {
+            _count: {
+              channel: "desc",
+            },
+          },
+          take: 1,
+        }),
+        // Get initial campaigns for the first page
+        prisma.campaign.findMany({
+          where: { clientId: clientId },
+          orderBy: {
+            start_date: "desc",
+          },
+          take: DEFAULT_PAGE_SIZE,
+        }),
+      ]);
 
     const totalBudget = stats._sum.budget || 0;
     const totalConversions = stats._sum.conversions || 0;
@@ -109,13 +111,16 @@ async function getClientData(clientId: string): Promise<ClientData | null> {
     const totalRevenue = stats._sum.revenue_generated || 0;
 
     // Calculate conversion rate
-    const conversionRate = totalClicks > 0 ? (totalConversions / totalClicks) * 100 : 0;
+    const conversionRate =
+      totalClicks > 0 ? (totalConversions / totalClicks) * 100 : 0;
 
     // Calculate click-through rate
-    const clickThroughRate = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
+    const clickThroughRate =
+      totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
 
     // Get most used channel
-    const mostUsedChannel = channelData.length > 0 ? channelData[0].channel : 'N/A';
+    const mostUsedChannel =
+      channelData.length > 0 ? channelData[0].channel : "N/A";
 
     return {
       client: {
@@ -134,7 +139,7 @@ async function getClientData(clientId: string): Promise<ClientData | null> {
         mostUsedChannel,
       },
       initialCampaigns: {
-        campaigns: initialCampaigns.map(campaign => ({
+        campaigns: initialCampaigns.map((campaign) => ({
           campaign_id: campaign.campaign_id,
           campaign_name: campaign.campaign_name,
           start_date: campaign.start_date?.toISOString() || null,
@@ -154,8 +159,6 @@ async function getClientData(clientId: string): Promise<ClientData | null> {
   } catch (error) {
     console.error("Error fetching client data:", error);
     return null;
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -178,21 +181,24 @@ export default async function ClientViewPage({
       title: "Total Budget",
       value: formatCurrency(statistics.totalBudget),
       icon: PoundSterling,
-      tooltip: "Total budget allocated across all campaigns for this client. This represents the maximum amount planned to be spent on advertising.",
+      tooltip:
+        "Total budget allocated across all campaigns for this client. This represents the maximum amount planned to be spent on advertising.",
     },
     {
       id: "most-used-channel",
       title: "Most Used Channel",
       value: statistics.mostUsedChannel,
       icon: Target,
-      tooltip: "The advertising channel (Google, Facebook, Instagram, etc.) that this client uses most frequently across their campaigns.",
+      tooltip:
+        "The advertising channel (Google, Facebook, Instagram, etc.) that this client uses most frequently across their campaigns.",
     },
     {
       id: "total-impressions",
       title: "Total Impressions",
       value: formatNumber(statistics.totalImpressions),
       icon: Eye,
-      tooltip: "Total number of times this client's ads were displayed to users. This shows the reach and visibility of their campaigns.",
+      tooltip:
+        "Total number of times this client's ads were displayed to users. This shows the reach and visibility of their campaigns.",
     },
     {
       id: "total-clicks",
@@ -200,7 +206,8 @@ export default async function ClientViewPage({
       value: formatNumber(statistics.totalClicks),
       icon: MousePointer,
       subtitle: `${formatPercentage(statistics.clickThroughRate)} CTR`,
-      tooltip: "Total number of clicks on this client's ads. CTR (Click-Through Rate) shows how effectively their ads attract user engagement.",
+      tooltip:
+        "Total number of clicks on this client's ads. CTR (Click-Through Rate) shows how effectively their ads attract user engagement.",
     },
     {
       id: "total-conversions",
@@ -210,14 +217,16 @@ export default async function ClientViewPage({
       subtitle: `${formatPercentage(
         statistics.conversionRate
       )} conversion rate`,
-      tooltip: "Total successful conversions (purchases, sign-ups, etc.) for this client. The conversion rate shows how well their campaigns turn clicks into actions.",
+      tooltip:
+        "Total successful conversions (purchases, sign-ups, etc.) for this client. The conversion rate shows how well their campaigns turn clicks into actions.",
     },
     {
       id: "total-revenue",
       title: "Revenue Generated",
       value: formatCurrency(statistics.totalRevenue),
       icon: PoundSterling,
-      tooltip: "Total revenue generated from this client's campaigns. This represents the actual monetary value earned from their advertising efforts.",
+      tooltip:
+        "Total revenue generated from this client's campaigns. This represents the actual monetary value earned from their advertising efforts.",
     },
   ];
 
@@ -243,9 +252,9 @@ export default async function ClientViewPage({
       <StatCardGrid cards={statCards} />
 
       {/* Campaigns List */}
-      <CampaignsList 
-        clientId={client.id} 
-        clientName={client.name} 
+      <CampaignsList
+        clientId={client.id}
+        clientName={client.name}
         initialData={initialCampaigns}
       />
     </div>

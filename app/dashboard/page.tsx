@@ -2,7 +2,8 @@ import { StatCardGrid } from "@/components/ui";
 import { formatCurrency, formatNumber, formatPercentage } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
 import { Eye, MousePointer, PoundSterling, TrendingUp } from "lucide-react";
-import ClientList from "../client/client-list";
+import ClientList from "./components/client-list";
+import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 
 export default async function DashboardPage() {
   // Calculate aggregated statistics at database level for better performance
@@ -16,7 +17,7 @@ export default async function DashboardPage() {
   });
 
   // Fetch initial client data for better performance
-  const limit = 20;
+  const limit = DEFAULT_PAGE_SIZE;
   const [initialClients, totalClientCount] = await Promise.all([
     prisma.client.findMany({
       select: {
