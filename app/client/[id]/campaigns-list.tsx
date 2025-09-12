@@ -30,7 +30,7 @@ export default function CampaignsList({
   const limit = DEFAULT_PAGE_SIZE;
 
   // Use React Query for data fetching
-  const { data, isLoading, error, isFetching, refetch } = useCampaigns({
+  const { data, isLoading, error, isFetching } = useCampaigns({
     clientId,
     page: currentPage,
     limit,
@@ -44,10 +44,6 @@ export default function CampaignsList({
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
-  };
-
-  const handleRetry = () => {
-    refetch();
   };
 
   // Use initial data if available and no query data yet
