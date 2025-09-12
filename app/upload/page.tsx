@@ -10,6 +10,7 @@ import { useState } from "react";
 import { uploadCSV } from "./actions";
 import { CSV_TEMPLATE_HEADERS } from "./constants";
 import { DownloadTemplateButton } from "./components/DownloadTemplateButton";
+import { useRouter } from "next/navigation";
 
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -18,6 +19,7 @@ export default function UploadPage() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+  const router = useRouter();
 
   const validateFile = (selectedFile: File) => {
     if (
@@ -39,7 +41,6 @@ export default function UploadPage() {
     setUploadStatus({ type: null, message: "" });
   };
 
-
   const handleUpload = async () => {
     if (!file) return;
 
@@ -58,6 +59,10 @@ export default function UploadPage() {
           message: `Successfully imported ${result.clientsCount} clients and ${result.campaignsCount} campaigns!`,
         });
         setFile(null);
+        // Redirect to dashboard after successful upload
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 1500); // Small delay to show success message
       } else {
         setUploadStatus({
           type: "error",

@@ -34,6 +34,7 @@ interface CampaignsTableProps {
 
 export function CampaignsTable({ campaigns }: CampaignsTableProps) {
   const columns = [
+    "SL No",
     "Campaign",
     "Start Date",
     "End Date",
@@ -65,6 +66,11 @@ export function CampaignsTable({ campaigns }: CampaignsTableProps) {
               key={campaign.campaign_id}
               className={`${index % 2 === 0 ? "bg-white" : "bg-slate-50/30"}`}
             >
+              <TableCell>
+                <span className="text-sm text-gray-700 font-medium">
+                  {index + 1}
+                </span>
+              </TableCell>
               <TableCell>
                 <div className="font-medium text-gray-900">
                   {campaign.campaign_name}

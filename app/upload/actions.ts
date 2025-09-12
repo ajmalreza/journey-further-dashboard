@@ -1,6 +1,7 @@
 "use server";
 
 import { processCSVData } from "@/lib/actions/csv-processor";
+import { revalidatePath } from "next/cache";
 
 export async function uploadCSV(formData: FormData) {
   try {
@@ -19,6 +20,11 @@ export async function uploadCSV(formData: FormData) {
     const csvText = await file.text();
 
     const result = await processCSVData(csvText);
+    
+    // If upload was successful, revalidate the dashboard
+    if (result.success) {
+      revalidatePath("/dashboard");
+    }
     
     return result;
   } catch (error) {

@@ -1,10 +1,15 @@
 "use client";
 
-import { Card, CardContent, Pagination } from "@/components/ui";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Pagination,
+} from "@/components/ui";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 import { useCampaigns, type Campaign } from "@/lib/hooks/use-campaigns";
 import { useState } from "react";
-import { CampaignsListHeader } from "./components/CampaignsListHeader";
 import { CampaignsTable } from "./components/CampaignsTable";
 import { EmptyState } from "./components/EmptyState";
 import { ErrorState } from "./components/ErrorState";
@@ -87,7 +92,9 @@ export default function CampaignsList({
 
   return (
     <Card>
-      <CampaignsListHeader clientName={clientName} />
+      <CardHeader>
+        <CardTitle className="text-text-primary-900">Campaigns</CardTitle>
+      </CardHeader>
       <CardContent>{renderContent()}</CardContent>
     </Card>
   );
