@@ -6,19 +6,17 @@ import ClientList from "./components/client-list";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 
 export default async function DashboardPage() {
-  // Calculate aggregated statistics at database level for better performance
-  const stats = await prisma.campaign.aggregate({
-    _sum: {
-      conversions: true,
-      clicks: true,
-      impressions: true,
-      revenue_generated: true,
-    },
-  });
-
-  // Fetch initial client data for better performance
+  // Fetch all data in parallel for better performance
   const limit = DEFAULT_PAGE_SIZE;
-  const [initialClients, totalClientCount] = await Promise.all([
+  const [stats, initialClients, totalClientCount] = await Promise.all([
+    prisma.campaign.aggregate({
+      _sum: {
+        conversions: true,
+        clicks: true,
+        impressions: true,
+        revenue_generated: true,
+      },
+    }),
     prisma.client.findMany({
       select: {
         id: true,
