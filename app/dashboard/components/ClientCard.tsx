@@ -18,6 +18,7 @@ export function ClientCard({ client }: ClientCardProps) {
       key={client.id}
       href={`/client/${client.id}`}
       className="block cursor-pointer"
+      prefetch={false}
     >
       <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-lg hover:bg-primary-50 hover:border-primary-500 transition-all duration-200">
         <div className="flex items-center space-x-3">

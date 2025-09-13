@@ -24,6 +24,7 @@ export async function uploadCSV(formData: FormData) {
     // If upload was successful, revalidate the dashboard
     if (result.success) {
       revalidatePath("/dashboard");
+      revalidatePath("/api/clients");
     }
     
     return result;
