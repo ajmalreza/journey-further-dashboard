@@ -11,6 +11,7 @@ import { uploadCSV } from "./actions";
 import { CSV_TEMPLATE_HEADERS } from "./constants";
 import { DownloadTemplateButton } from "./components/DownloadTemplateButton";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -20,6 +21,7 @@ export default function UploadPage() {
     message: string;
   }>({ type: null, message: "" });
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const validateFile = (selectedFile: File) => {
     if (
@@ -59,6 +61,10 @@ export default function UploadPage() {
           message: `Successfully imported ${result.clientsCount} clients and ${result.campaignsCount} campaigns!`,
         });
         setFile(null);
+        
+        // Invalidate React Query cache for clients to ensure fresh data on dashboard
+        queryClient.invalidateQueries({ queryKey: ["clients"] });
+        
         // Redirect to dashboard after successful upload
         setTimeout(() => {
           router.push("/dashboard");

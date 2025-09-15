@@ -18,7 +18,7 @@ export function formatNumber(num: number): string {
 }
 
 export function formatPercentage(value: number): string {
-  return `${value.toFixed(2)}%`;
+  return `${value.toFixed(0)}%`;
 }
 
 export function formatDate(dateString: string | null): string {

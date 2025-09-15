@@ -75,7 +75,6 @@ export default function ClientList({ initialData }: ClientListProps) {
     refetch();
   };
 
-  // React Query handles initial data automatically - use values directly
 
   if (isLoading) {
     return (
